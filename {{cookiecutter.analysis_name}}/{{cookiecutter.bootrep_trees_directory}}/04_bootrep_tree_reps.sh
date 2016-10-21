@@ -35,7 +35,7 @@ cd $bootrep
 base=`basename ${phylip}`
 root="${base%.*}"
 python ~/phyluce/bin/align/phyluce_align_generate_concatenated_multilocus_bootstraps \
-   --alignments $workdir/$root \
+   --alignments {{cookiecutter.top_level_directory}}/$root \
    --output $bootrep_reps \
    --bootreps $reps \
    --prefix {{cookiecutter.phylip_file}}
