@@ -9,7 +9,7 @@
 
 export workdir={{cookiecutter.top_level_directory}}/{{cookiecutter.analysis_name}}
 export best=$workdir/{{cookiecutter.best_trees_directory}}
-export phylip=$workdir/{{cookiecutter.phylip_file}}
+export phylip={{cookiecutter.top_level_directory}}/{{cookiecutter.phylip_file}}
 
 # keep the binary alignment file with the best tree
 cd $best
