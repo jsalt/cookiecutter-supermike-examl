@@ -2,8 +2,8 @@
 #PBS -q checkpt
 #PBS -l nodes={{cookiecutter.analysis_nodes}}:ppn={{cookiecutter.analysis_ppn}}
 #PBS -l walltime={{cookiecutter.analysis_time}}:00:00
-#PBS -o 03_best_examl.stdout
-#PBS -e 03_best_examl.stderr
+#PBS -o 03_best_tree_examl.stdout
+#PBS -e 03_best_tree_examl.stderr
 #PBS -N 03_best_examl
 #PBS -A {{cookiecutter.allocation_name}}
 
