@@ -2,8 +2,8 @@
 #PBS -q single
 #PBS -l nodes=1:ppn=1
 #PBS -l walltime=5:00:00
-#PBS -o 05_bootrep_parsimonator.stdout
-#PBS -e 05_bootrep_parsimonator.stderr
+#PBS -o 05_bootrep_tree_parsimonator.stdout
+#PBS -e 05_bootrep_tree_parsimonator.stderr
 #PBS -N 05_bootrep_parsimonator
 #PBS -A {{cookiecutter.allocation_name}}
 
