@@ -27,8 +27,8 @@ besttree=$(grep -l $likelihood ExaML_info.T* | sed 's/ExaML_info.//')
 echo Best tree is $besttree with likelihood -$likelihood
 # summarize tree using sumtrees.py
 cd $workdir
-sumtrees.py -o $root.raxml.tre -t $best/ExaML_result.$besttree $bootrep/ExaML_result.T*
-sumtrees.py -o $root.raxml.con.tre $bootrep/ExaML_result.T*
+sumtrees.py -o $root.ExaML.tre -t $best/ExaML_result.$besttree $bootrep/ExaML_result.T*
+sumtrees.py -o $root.ExaML.con.tre $bootrep/ExaML_result.T*
 # processing ends
 date
 # done
