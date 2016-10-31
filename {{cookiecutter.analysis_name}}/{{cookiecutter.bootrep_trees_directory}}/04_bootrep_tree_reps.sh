@@ -10,7 +10,7 @@
 export workdir={{cookiecutter.top_level_directory}}/{{cookiecutter.analysis_name}}
 export bootrep=$workdir/{{cookiecutter.bootrep_trees_directory}}
 export bootrep_reps=$bootrep/{{cookiecutter.bootrep_trees_reps_directory}}
-export phylip=$workdir/{{cookiecutter.phylip_file}}
+export phylip={{cookiecutter.top_level_directory}}/{{cookiecutter.phylip_file}}
 export reps={{cookiecutter.number_of_bootreps}}
 
 # compute some values on the fly
@@ -39,9 +39,9 @@ python ~/phyluce/bin/align/phyluce_align_generate_concatenated_multilocus_bootst
    --output $bootrep_reps \
    --bootreps $reps \
    --prefix {{cookiecutter.phylip_file}}
+cd $bootrep_reps
 
 # convert those bootreps to binary format
-cd $bootrep_reps
 for i in  $(seq 0 $rep_iterator);
 do
     parse-examl -m DNA -s {{cookiecutter.phylip_file}}.BS$i -n BS$i;
