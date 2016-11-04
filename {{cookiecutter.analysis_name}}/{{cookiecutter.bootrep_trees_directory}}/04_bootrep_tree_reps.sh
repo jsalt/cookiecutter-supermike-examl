@@ -20,26 +20,26 @@ rep_iterator=$(({{cookiecutter.number_of_bootreps}} - 1))
 date
 
 # ========= Regular bootstrapping =================
-# mkdir -p $bootrep_reps
-# cd $bootrep_reps
+mkdir -p $bootrep_reps
+cd $bootrep_reps
 # there seems to be a bug in raxml w/ full paths and bootstrapping
 # use symlink to get around it
-# ln -s $phylip
+ln -s $phylip
 # generate $reps bootreps from phylip file
-# raxmlHPC-AVX -N $reps -b $RANDOM -f j -m GTRGAMMA -s {{cookiecutter.phylip_file}} -n REPS
+raxmlHPC-AVX -N $reps -b $RANDOM -f j -m GTRGAMMA -s {{cookiecutter.phylip_file}} -n REPS
 
 # ========== Multi-locus bootstrapping ============
 # generate $reps bootreps from folder of aligned nexus files
-cd $bootrep
+# cd $bootrep
 # get folder name from phylip alignment file
-base=`basename ${phylip}`
-root="${base%.*}"
-python ~/phyluce/bin/align/phyluce_align_generate_concatenated_multilocus_bootstraps \
-   --alignments {{cookiecutter.top_level_directory}}/$root \
-   --output $bootrep_reps \
-   --bootreps $reps \
-   --prefix {{cookiecutter.phylip_file}}
-cd $bootrep_reps
+# base=`basename ${phylip}`
+# root="${base%.*}"
+# python ~/phyluce/bin/align/phyluce_align_generate_concatenated_multilocus_bootstraps \
+#   --alignments {{cookiecutter.top_level_directory}}/$root \
+#   --output $bootrep_reps \
+#   --bootreps $reps \
+#   --prefix {{cookiecutter.phylip_file}}
+# cd $bootrep_reps
 
 # convert those bootreps to binary format
 for i in  $(seq 0 $rep_iterator);
