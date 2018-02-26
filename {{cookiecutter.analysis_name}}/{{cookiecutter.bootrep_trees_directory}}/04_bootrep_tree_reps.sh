@@ -42,10 +42,14 @@ raxmlHPC-AVX -N $reps -b $RANDOM -f j -m GTRGAMMA -s {{cookiecutter.phylip_file}
 # cd $bootrep_reps
 
 # convert those bootreps to binary format
-for i in  $(seq 0 $rep_iterator);
-do
-    parse-examl -m DNA -s {{cookiecutter.phylip_file}}.BS$i -n BS$i;
-done
+parallel 'parse-examl -m DNA -s {{cookiecutter.phylip_file}}.BS{} -n BS{}' ::: $(seq 0 $rep_iterator)
+
+# old version not parallel
+# for i in  $(seq 0 $rep_iterator);
+# do
+#     parse-examl -m DNA -s {{cookiecutter.phylip_file}}.BS$i -n BS$i;
+# done
+
 # processing ends
 date
 # done
