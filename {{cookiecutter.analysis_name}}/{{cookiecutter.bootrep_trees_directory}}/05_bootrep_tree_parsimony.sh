@@ -21,13 +21,18 @@ cd $bootrep_parsimony
 # processing starts
 date
 # iterate over bootreps to create parsimony starting trees
-for i in  $(seq 0 $rep_iterator);
-do
-    parsimonator-AVX -s $bootrep_reps/{{cookiecutter.phylip_file}}.BS$i -p $RANDOM -n BS$i -N 1;
-    mv RAxML_parsimonyTree.BS$i.0 RAxML_parsimonyTree.BS$i
+parallel 'parsimonator-AVX -s $bootrep_reps/{{cookiecutter.phylip_file}}.BS{} -p $RANDOM -n BS{} -N 1; mv RAxML_parsimonyTree.BS{}.0 RAxML_parsimonyTree.BS{}' ::: $(seq 0 $rep_iterator)
+# remove bootstrap replicates
+rm $bootrep_reps/{{cookiecutter.phylip_file}}.BS*
+
+# for i in  $(seq 0 $rep_iterator);
+# do
+#     parsimonator-AVX -s $bootrep_reps/{{cookiecutter.phylip_file}}.BS$i -p $RANDOM -n BS$i -N 1;
+#     mv RAxML_parsimonyTree.BS$i.0 RAxML_parsimonyTree.BS$i
 #    retain bootstrap replicate for svdquartets
 #    rm $bootrep_reps/{{cookiecutter.phylip_file}}.BS$i
-done
+# done
+
 # processing ends
 date
 # done
