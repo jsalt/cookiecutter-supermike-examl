@@ -26,7 +26,7 @@ cd $bootrep_reps
 # use symlink to get around it
 ln -s $phylip
 # generate $reps bootreps from phylip file
-raxmlHPC-AVX -N $reps -b $RANDOM -f j -m GTRGAMMA -s {{cookiecutter.phylip_file}} -n REPS
+raxmlHPC-PTHREADS-SSE3 -N $reps -b $RANDOM -f j -m GTRGAMMA -s {{cookiecutter.phylip_file}} -n REPS
 
 # ========== Multi-locus bootstrapping ============
 # generate $reps bootreps from folder of aligned nexus files
