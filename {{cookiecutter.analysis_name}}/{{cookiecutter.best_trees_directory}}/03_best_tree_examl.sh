@@ -22,7 +22,7 @@ date
 # run command
 for i in $(seq 0 $num_trees_iter);
 do
-    mpirun -np $procs -machinefile $PBS_NODEFILE examl-AVX -s $binary_phylip -t $parsimony/RAxML_parsimonyTree.best.RUN.$i -m GAMMA -n T$i;
+    mpirun -np $procs -machinefile $PBS_NODEFILE examl -s $binary_phylip -t $parsimony/RAxML_parsimonyTree.best.RUN.$i -m GAMMA -n T$i;
     rm ExaML_binaryCheckpoint.T$i_*;
 done
 # processing ends
